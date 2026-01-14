@@ -1,0 +1,15 @@
+venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Database (opsional, tapi biasanya tidak diupload agar repo bersih)
+db.sqlite3
+
+# Folder media/upload (jika ada)
+media/
+
+# File sistem
+.DS_Store

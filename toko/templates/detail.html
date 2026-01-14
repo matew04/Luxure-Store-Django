@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="row mt-5 justify-content-center">
+    <div class="col-md-5">
+        <img src="{{ produk.gambar_url }}" class="img-fluid rounded-5 shadow-lg">
+    </div>
+    <div class="col-md-5 ps-md-5">
+        <h1 class="display-5 fw-bold mb-3">{{ produk.nama }}</h1>
+        <h2 class="text-danger fw-bold mb-4">Rp {{ produk.harga|intcomma }}</h2>
+        <hr>
+        <p class="text-secondary">{{ produk.deskripsi }}</p>
+
+        <div class="bg-white p-4 rounded-4 shadow-sm border mt-5">
+            <form action="{% url 'tambah_ke_keranjang' produk.id %}" method="POST">
+                {% csrf_token %}
+
+                {% if produk.punya_ukuran %}
+                <div class="mb-3">
+                    <label class="fw-bold mb-2">Pilih Ukuran Baju/Celana:</label>
+                    <select name="ukuran" class="form-select rounded-3" required>
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+
+                {% elif produk.punya_ukuran_sepatu %}
+                <div class="mb-3">
+                    <label class="fw-bold mb-2">Pilih Ukuran Sepatu/Sandal:</label>
+                    <select name="ukuran" class="form-select rounded-3" required>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40" selected>40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                    </select>
+                </div>
+
+                {% else %}
+                <input type="hidden" name="ukuran" value="All Size">
+                <p class="text-muted small italic mb-3">*Produk ini All Size</p>
+                {% endif %}
+
+                <button type="submit" class="btn btn-dark btn-lg w-100 py-3 shadow fw-bold">TAMBAH KE KERANJANG</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

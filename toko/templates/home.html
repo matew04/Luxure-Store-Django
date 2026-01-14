@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="p-5 mb-5 rounded-5 text-white shadow-lg"
+    style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200'); background-size: cover; background-position: center;">
+    <div class="py-5 text-center">
+        <h1 class="display-3 fw-bold">ELEVATE YOUR STYLE</h1>
+        <p class="fs-4">Koleksi fashion premium untuk pria, wanita, dan anak-anak.</p>
+        <a href="{% url 'kategori' 'Wanita' %}" class="btn btn-light btn-lg px-5 py-3 mt-3 shadow">EXPLORE NOW</a>
+    </div>
+</div>
+<h2 class="fw-bold mb-4">Produk Terbaru</h2>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for p in produk %}
+    <div class="col">
+        <div class="card h-100 shadow-sm p-2">
+            <img src="{{ p.gambar_url }}" class="card-img-top rounded-4" style="height: 320px; object-fit: cover;">
+            <div class="card-body text-center">
+                <p class="text-muted small mb-1">{{ p.kategori }}</p>
+                <h6 class="fw-bold">{{ p.nama }}</h6>
+                <p class="text-danger fw-bold">Rp {{ p.harga|intcomma }}</p>
+                <a href="{% url 'detail_produk' p.id %}" class="btn btn-dark w-100">LIHAT DETAIL</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

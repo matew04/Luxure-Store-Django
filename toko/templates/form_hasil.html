@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-7 text-center">
+        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4 shadow"
+            style="width: 70px; height: 70px;">
+            <h2 class="mb-0">✓</h2>
+        </div>
+        <h2 class="fw-800">Pesanan Berhasil!</h2>
+        <p class="text-secondary">Terima kasih <strong>{{ nama }}</strong>. Ringkasan belanja Anda telah tercatat.</p>
+
+        <div class="card p-4 shadow-sm border-0 text-start mt-4" style="border-radius: 20px;">
+            <h6 class="fw-bold border-bottom pb-2 mb-3">Rincian Produk:</h6>
+            {% for item in items %}
+            <div class="d-flex align-items-center mb-3">
+                <img src="{{ item.produk.gambar_url }}" width="50" class="rounded me-3">
+                <div class="flex-grow-1">
+                    <span class="fw-bold d-block">{{ item.produk.nama }}</span>
+                    <small class="text-muted">
+                        Size: {{ item.ukuran }} | {{ item.qty }}x - Rp {{ item.produk.harga|intcomma }}
+                    </small>
+                </div>
+                <span class="fw-bold">Rp {{ item.subtotal|intcomma }}</span>
+            </div>
+            {% endfor %}
+            <div class="d-flex justify-content-between mt-3 border-top pt-3">
+                <h5 class="fw-bold">Total Akhir:</h5>
+                <h5 class="fw-bold text-danger">Rp {{ total|intcomma }}</h5>
+            </div>
+            <div class="mt-3 small p-3 bg-light rounded-3">
+                <p class="mb-1"><strong>Nama:</strong>{{nama}}</p>
+                <p class="mb-1"><strong>Email:</strong> {{ email }}</p>
+                <p class="mb-0"><strong>Catatan:</strong> {{ pesan|default:"Tidak ada catatan" }}</p>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <a href="{% url 'home' %}" class="btn btn-dark px-5 py-2 fw-bold rounded-pill shadow">KEMBALI KE HOME</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

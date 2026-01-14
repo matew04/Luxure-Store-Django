@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="py-5 text-center">
+    <h1 class="display-4 fw-800 text-uppercase">Fashion {{ kategori }}</h1>
+    <p class="text-muted">Menampilkan koleksi terbaik kami untuk kategori {{ kategori }}</p>
+</div>
+
+<div class="row row-cols-2 row-cols-md-5 g-4">
+    {% for p in items %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ p.gambar_url }}" class="card-img-top" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+                <h6 class="fw-bold mb-1">{{ p.nama }}</h6>
+                <p class="text-danger fw-600 mb-2">Rp {{ p.harga }}</p>
+                <a href="{% url 'detail_produk' p.id %}" class="btn btn-outline-dark btn-sm w-100">Lihat</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
