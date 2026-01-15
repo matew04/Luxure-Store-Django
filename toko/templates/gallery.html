@@ -1,113 +1,22 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<div class="py-5">
-    <div class="text-center mb-5">
-        <h1 class="fw-800 display-4">MEET OUR TEAM</h1>
-        <p class="text-muted">Para pengembang di balik platform LUXURE STORE.</p>
-        <hr class="mx-auto" style="width: 50px; height: 3px; background: #333;">
-    </div>
-
-    <div class="row justify-content-center g-4">
-
-        <div class="col-lg-10 mb-4">
-            <div class="card border-0 shadow-sm overflow-hidden" style="border-radius: 25px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4">
-                        <img src="{% static 'images/img2.jpeg' %}" class="img-fluid h-100 object-fit-cover"
-                            style="min-height: 300px;" alt="Foto Developer">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="fw-bold mb-1">Imad Ezzat Fanany</h3>
-                            <p class="text-primary fw-600 mb-3">NIM: 0110225137 | Informatika</p>
-                            <p class="text-secondary">
-                                "Bertanggung jawab atas pengembangan sistem backend menggunakan Django dan integrasi
-                                database produk. Fokus pada fungsionalitas dan keamanan sistem."
-                            </p>
-                            <div class="mt-4">
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Backend Developer</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Django Expert</span>
-                            </div>
-                        </div>
-                    </div>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Luxure Product Gallery</h2>
+    <p class="text-center text-muted">Jelajahi koleksi produk eksklusif kami secara visual.</p>
+    
+    <div class="row">
+        {% for p in produk %}
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm border-0">
+                <img src="{{ p.gambar_url }}" class="card-img-top" alt="{{ p.nama }}" style="height: 250px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h6 class="card-title">{{ p.nama }}</h6>
+                    <a href="{% url 'detail' p.id %}" class="btn btn-sm btn-outline-dark">Lihat Detail</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-10 mb-4">
-            <div class="card border-0 shadow-sm overflow-hidden" style="border-radius: 25px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4">
-                        <img src="{% static 'images/img1.jpeg' %}" class="img-fluid h-100 object-fit-cover"
-                            style="min-height: 300px;" alt="Foto Developer">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="fw-bold mb-1">Danish Aulia Irawan</h3>
-                            <p class="text-primary fw-600 mb-3">NIM: 0110225009 | Informatika</p>
-                            <p class="text-secondary">
-                                "Bertanggung jawab atas pengembangan sistem backend menggunakan Django dan integrasi
-                                database produk. Fokus pada fungsionalitas dan keamanan sistem."
-                            </p>
-                            <div class="mt-4">
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Backend Developer</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Django Expert</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-10 mb-4">
-            <div class="card border-0 shadow-sm overflow-hidden" style="border-radius: 25px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4">
-                        <img src="{% static 'images/image3.jpeg' %}" class="img-fluid h-100 object-fit-cover"
-                            style="min-height: 300px;" alt="Foto Developer">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="fw-bold mb-1">Maulana Saputra</h3>
-                            <p class="text-primary fw-600 mb-3">NIM: 0110225158 | Informatika</p>
-                            <p class="text-secondary">
-                                Bertanggung jawab dalam mendukung pelaksanaan proyek, mulai dari proses pengerjaan
-                                hingga penyusunan laporan akhir.
-                            </p>
-                            <div class="mt-4">
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Backend Developer</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Django Expert</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-10 mb-4">
-            <div class="card border-0 shadow-sm overflow-hidden" style="border-radius: 25px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4">
-                        <img src="{% static 'images/img4.jpeg' %}" class="img-fluid h-100 object-fit-cover"
-                            style="min-height: 300px;" alt="Foto Developer">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="fw-bold mb-1">Ghozi Muhammad Alghani</h3>
-                            <p class="text-primary fw-600 mb-3">NIM: 0110225015 | Informatika</p>
-                            <p class="text-secondary">
-                                Bertanggung jawab dalam mendukung pelaksanaan proyek, mulai dari proses pengerjaan
-                                hingga penyusunan laporan akhir.
-                            <div class="mt-4">
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Frontend Developer</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">UI/UX Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

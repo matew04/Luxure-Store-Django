@@ -108,3 +108,7 @@ def form_pesanan(request):
 
 def about(request): return render(request, 'about.html')
 def gallery(request): return render(request, 'gallery.html')
+def gallery(request):
+    # Mengambil semua produk dari database untuk ditampilkan di galeri
+    semua_produk = Produk.objects.all()
+    return render(request, 'gallery.html', {'produk': semua_produk})

@@ -19,7 +19,7 @@
                 <p class="text-muted small mb-1">{{ p.kategori }}</p>
                 <h6 class="fw-bold">{{ p.nama }}</h6>
                 <p class="text-danger fw-bold">Rp {{ p.harga|intcomma }}</p>
-                <a href="{% url 'detail_produk' p.id %}" class="btn btn-dark w-100">LIHAT DETAIL</a>
+                <a href="{% url 'detail' p.id %}" class="btn btn-dark w-100">LIHAT DETAIL</a>
             </div>
         </div>
     </div>
